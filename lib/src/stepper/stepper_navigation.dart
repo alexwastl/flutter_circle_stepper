@@ -6,8 +6,8 @@ const double currentDotSize = 15;
 const double dotSize = 10;
 
 /// Custom navigation component that displays a progress stepper with dots
-class AppStepperNavigation extends StatefulWidget {
-  const AppStepperNavigation(
+class StepperNavigation extends StatefulWidget {
+  const StepperNavigation(
       {super.key,
       required this.stepperLength,
       required this.onNext,
@@ -35,10 +35,10 @@ class AppStepperNavigation extends StatefulWidget {
   final VoidCallback onPrevious;
 
   @override
-  State<AppStepperNavigation> createState() => AppStepperNavigationState();
+  State<StepperNavigation> createState() => StepperNavigationState();
 }
 
-class AppStepperNavigationState extends State<AppStepperNavigation> {
+class StepperNavigationState extends State<StepperNavigation> {
   void onNext() {
     widget.onNext.call();
   }
