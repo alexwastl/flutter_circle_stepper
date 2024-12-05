@@ -13,29 +13,21 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  int currentIndex = 0;
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            // Add your widgets
-            StepperNavigation(
-              stepperLength: 5,
-              onNext: () => setState(() {
-                currentIndex++;
-              }),
-              onPrevious: () => setState(() {
-                currentIndex = currentIndex - 1;
-              }),
-              currentIndex: currentIndex,
-              progressColor: Colors.orange,
-              unfinishedColor: Colors.grey,
-            ),
-          ],
+        body: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              StepperNavigation(
+                stepperLength: 5,
+                progressColor: Colors.blue,
+                unfinishedColor: Colors.grey,
+              ),
+            ],
+          ),
         ),
       ),
     );

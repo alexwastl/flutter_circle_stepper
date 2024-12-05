@@ -7,14 +7,15 @@ const double dotSize = 10;
 
 /// Custom navigation component that displays a progress stepper with dots
 class StepperNavigation extends StatefulWidget {
-  const StepperNavigation(
-      {super.key,
-      required this.stepperLength,
-      required this.onNext,
-      required this.onPrevious,
-      required this.currentIndex,
-      required this.progressColor,
-      required this.unfinishedColor});
+  const StepperNavigation({
+    super.key,
+    required this.stepperLength,
+    this.onNext,
+    this.onPrevious,
+    required this.progressColor,
+    required this.unfinishedColor,
+    this.onStepTapped,
+  });
 
   /// determines the length of the navigation dots
   final int stepperLength;
@@ -25,27 +26,38 @@ class StepperNavigation extends StatefulWidget {
   /// Color of dots that are not progressed
   final Color unfinishedColor;
 
-  /// current index of the app stepper
-  final int currentIndex;
+  /// optional callback when the next arrow is tapped
+  final VoidCallback? onNext;
 
-  /// callback when the next arrow is tapped
-  final VoidCallback onNext;
+  /// optional callback when the previous arrow is tapped
+  final VoidCallback? onPrevious;
 
-  /// callback when the previous arrow is tapped
-  final VoidCallback onPrevious;
+  /// optional callback when a step is tapped
+  final Function(int)? onStepTapped;
 
   @override
   State<StepperNavigation> createState() => StepperNavigationState();
 }
 
 class StepperNavigationState extends State<StepperNavigation> {
+  int currentIndex = 0;
+
   void onNext() {
-    widget.onNext.call();
+    if (currentIndex != widget.stepperLength - 1) {
+      setState(() {
+        currentIndex++;
+      });
+
+      widget.onNext?.call();
+    }
   }
 
   void onPrevious() {
-    if (widget.currentIndex != 0) {
-      widget.onPrevious.call();
+    if (currentIndex != 0) {
+      setState(() {
+        currentIndex--;
+      });
+      widget.onPrevious?.call();
     }
   }
 
@@ -63,8 +75,8 @@ class StepperNavigationState extends State<StepperNavigation> {
               children: List.generate(
                 widget.stepperLength,
                 (index) => ProgressDot(
-                  size: index == widget.currentIndex ? currentDotSize : dotSize,
-                  dotColor: index > widget.currentIndex
+                  size: index == currentIndex ? currentDotSize : dotSize,
+                  dotColor: index > currentIndex
                       ? widget.unfinishedColor
                       : widget.progressColor,
                 ),
@@ -75,10 +87,11 @@ class StepperNavigationState extends State<StepperNavigation> {
         // Navigation
         Row(
           children: [
-            widget.currentIndex != 0
+            currentIndex != 0
                 ? CustomCircleAvatar(
                     onTap: () {
                       onPrevious();
+                      widget.onStepTapped?.call(currentIndex);
                     },
                     icon: const Icon(
                       Icons.chevron_left,
@@ -91,6 +104,7 @@ class StepperNavigationState extends State<StepperNavigation> {
             CustomCircleAvatar(
               onTap: () {
                 onNext();
+                widget.onStepTapped?.call(currentIndex);
               },
               icon: const Icon(
                 Icons.chevron_right,
