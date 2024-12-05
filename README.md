@@ -7,7 +7,7 @@ A simple circle stepper to display progress in a Flutter app.
 ## Usage
 
 ```dart
-CircleStepper(
+FlutterCircleStepper(
     stepperLength: 5,
     progressColor: Colors.blue,
     unfinishedColor: Colors.grey,
