@@ -2,11 +2,7 @@ A simple circle stepper to display progress in a Flutter app.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-
+<img src="https://github.com/alexwastl/flutter_circle_stepper/raw/main/assets/stepper_preview.png" alt="screenshot"/>
 
 ## Usage
 
