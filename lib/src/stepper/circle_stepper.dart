@@ -1,13 +1,13 @@
+import 'package:circle_stepper/src/widgets/circle_avatar.dart';
+import 'package:circle_stepper/src/widgets/progress_dot.dart';
 import 'package:flutter/material.dart';
-import 'package:stepper_navigation/src/widgets/circle_avatar.dart';
-import 'package:stepper_navigation/src/widgets/progress_dot.dart';
 
 const double currentDotSize = 15;
 const double dotSize = 10;
 
 /// Custom navigation component that displays a progress stepper with dots
-class StepperNavigation extends StatefulWidget {
-  const StepperNavigation({
+class CircleStepper extends StatefulWidget {
+  const CircleStepper({
     super.key,
     required this.stepperLength,
     this.onNext,
@@ -32,14 +32,14 @@ class StepperNavigation extends StatefulWidget {
   /// optional callback when the previous arrow is tapped
   final VoidCallback? onPrevious;
 
-  /// optional callback when a step is tapped
+  /// optional callback that returns the current step index when a step is tapped
   final Function(int)? onStepTapped;
 
   @override
-  State<StepperNavigation> createState() => StepperNavigationState();
+  State<CircleStepper> createState() => CircleStepperState();
 }
 
-class StepperNavigationState extends State<StepperNavigation> {
+class CircleStepperState extends State<CircleStepper> {
   int currentIndex = 0;
 
   void onNext() {

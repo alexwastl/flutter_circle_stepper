@@ -1,3 +1,3 @@
-# stepper_navigation_example
+# circle_stepper_example
 
 A new Flutter project.

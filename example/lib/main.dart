@@ -1,5 +1,5 @@
+import 'package:circle_stepper/circle_stepper.dart';
 import 'package:flutter/material.dart';
-import 'package:stepper_navigation/stepper_navigation.dart';
 
 void main() {
   runApp(const MainApp());
@@ -21,7 +21,7 @@ class _MainAppState extends State<MainApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              StepperNavigation(
+              CircleStepper(
                 stepperLength: 5,
                 progressColor: Colors.blue,
                 unfinishedColor: Colors.grey,
