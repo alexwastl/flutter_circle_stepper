@@ -1,4 +1,4 @@
-import 'package:circle_stepper/flutter_circle_stepper.dart';
+import 'package:flutter_circle_stepper/flutter_circle_stepper.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
         body: SafeArea(
           child: Column(
@@ -25,6 +25,10 @@ class _MainAppState extends State<MainApp> {
                 stepperLength: 5,
                 progressColor: Colors.blue,
                 unfinishedColor: Colors.grey,
+                // callbacks
+                onStepTapped: (index) => debugPrint('Stepper at $index tapped'),
+                onNext: () => debugPrint('Next pressed'),
+                onPrevious: () => debugPrint('Previous pressed'),
               ),
             ],
           ),
