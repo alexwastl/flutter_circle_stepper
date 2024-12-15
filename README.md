@@ -11,6 +11,10 @@ FlutterCircleStepper(
     stepperLength: 5,
     progressColor: Colors.blue,
     unfinishedColor: Colors.grey,
+    // optional callbacks for stepper interaction 
+    onStepTapped: (index) => debugPrint('Stepper at $index tapped'),
+    onNext: () => debugPrint('Next pressed'),
+    onPrevious: () => debugPrint('Previous pressed'),
 ),
 ```
 

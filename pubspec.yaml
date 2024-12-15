@@ -1,6 +1,6 @@
 name: flutter_circle_stepper
-description: "A simple Circle Stepper for Flutter."
-version: 0.0.1
+description: "A simple and functional circle stepper for Flutter to visualise progress."
+version: 0.0.2
 repository: https://github.com/alexwastl/flutter_circle_stepper
 
 environment:
