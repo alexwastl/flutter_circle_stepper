@@ -90,8 +90,8 @@ class FlutterCircleStepperState extends State<FlutterCircleStepper> {
             currentIndex != 0
                 ? CustomCircleAvatar(
                     onTap: () {
-                      onPrevious();
                       widget.onStepTapped?.call(currentIndex);
+                      onPrevious();
                     },
                     icon: const Icon(
                       Icons.chevron_left,
@@ -103,8 +103,8 @@ class FlutterCircleStepperState extends State<FlutterCircleStepper> {
             const SizedBox(width: 10),
             CustomCircleAvatar(
               onTap: () {
-                onNext();
                 widget.onStepTapped?.call(currentIndex);
+                onNext();
               },
               icon: const Icon(
                 Icons.chevron_right,
